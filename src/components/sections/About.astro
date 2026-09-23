@@ -1,0 +1,117 @@
+---
+import SectionHead from "@/components/ui/SectionHead.astro";
+import { site } from "@/data/site";
+import { technologyBadges } from "@/data/skills";
+---
+
+<section class="sec" id="sobre-mi">
+  <div class="wrap">
+    <SectionHead tag="01 · Ficha" title="Sobre mí" number="01" />
+
+    <div class="about-grid">
+      <div class="about-copy panel reveal">
+        {site.bio.map((paragraph) => (
+          <p set:html={paragraph} />
+        ))}
+      </div>
+
+      <div>
+        <div class="quote panel reveal">
+          <blockquote>{site.quote}</blockquote>
+          <cite>{site.quoteCitation}</cite>
+        </div>
+
+        <div class="badges reveal" aria-label="Tecnologías">
+          {technologyBadges.map((name) => (
+            <span class="badge">
+              <i></i>
+              {name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .about-copy {
+    padding: 32px;
+  }
+  .about-copy p {
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .about-copy p:last-child {
+    margin-bottom: 0;
+  }
+  .about-copy :global(strong) {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .quote {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .quote blockquote {
+    font: 700 19px/1.5 var(--font-body);
+  }
+  .quote cite {
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--panel);
+    border: 4px solid var(--line);
+    border-radius: var(--r);
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 0 var(--sh);
+  }
+  .badge i {
+    width: 10px;
+    height: 10px;
+    background: var(--blue);
+    border: 2px solid var(--line);
+  }
+  .badge:nth-child(2n) i {
+    background: var(--lime);
+  }
+  .badge:nth-child(3n) i {
+    background: var(--amber);
+  }
+  .badge:nth-child(4n) i {
+    background: var(--coral);
+  }
+
+  @media (max-width: 1000px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

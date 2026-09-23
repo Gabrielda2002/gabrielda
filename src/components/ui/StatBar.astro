@@ -1,0 +1,16 @@
+---
+interface Props {
+  filled: number;
+  total: number;
+  tone: "on" | "lv" | "hi";
+}
+
+const { filled, total, tone } = Astro.props;
+---
+
+<span class="bar">
+  {Array.from({ length: total }).map((_, i) => {
+    const on = i < filled;
+    return <i class:list={[on && "on", on && tone !== "on" && tone]} />;
+  })}
+</span>

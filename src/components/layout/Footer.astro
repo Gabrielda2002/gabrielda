@@ -1,0 +1,61 @@
+---
+import { site } from "@/data/site";
+import { socialLinks } from "@/data/social";
+import type { SocialLink } from "@/types/portfolio";
+
+// Orden del diseño original: GitHub, LinkedIn, Email (distinto al orden de los
+// datos, que empieza por Email).
+const footerOrder = ["GitHub", "LinkedIn", "Email"];
+const footerLinks = footerOrder
+  .map((label) => socialLinks.find((s) => s.label === label))
+  .filter((s): s is SocialLink => Boolean(s));
+---
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>{site.footerText}</p>
+    <div class="links">
+      {footerLinks.map((s) => (
+        <a href={s.href}>{s.label}</a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    margin-top: auto;
+    background: var(--panel);
+    border-top: 4px solid var(--line);
+    padding: 24px 0;
+  }
+  .foot-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .foot p {
+    font: 700 10px/1.4 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .foot .links {
+    display: flex;
+    gap: 16px;
+  }
+  .foot .links a {
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 4px;
+    border-bottom: 4px solid transparent;
+  }
+  .foot .links a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--sel);
+  }
+</style>

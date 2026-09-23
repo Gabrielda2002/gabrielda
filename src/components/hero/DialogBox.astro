@@ -1,0 +1,62 @@
+<div class="dialog panel">
+  <span class="dialog-name">Gabriel</span>
+  <p>
+    <span id="typed"></span>
+    <span class="caret" id="caret"></span>
+  </p>
+</div>
+
+<script>
+  import { initTypewriter } from "@/scripts/typewriter";
+  initTypewriter();
+</script>
+
+<style>
+  .dialog {
+    position: relative;
+    max-width: 620px;
+    padding: 20px 24px 24px;
+    margin-bottom: 32px;
+  }
+  .dialog-name {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+    background: var(--blue);
+    color: #06152b;
+    border: 4px solid var(--line);
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .dialog p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .dialog p :global(strong) {
+    font-weight: 700;
+    background: var(--sun);
+    color: #241b04;
+    padding: 0 4px;
+  }
+  .caret {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    margin-left: 4px;
+    background: var(--ink);
+    vertical-align: -3px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caret {
+      animation: none;
+    }
+  }
+</style>

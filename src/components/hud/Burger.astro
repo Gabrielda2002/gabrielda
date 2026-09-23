@@ -1,0 +1,37 @@
+<button
+  class="ibtn burger"
+  id="burger"
+  type="button"
+  aria-label="Abrir menú"
+  aria-expanded="false"
+  aria-controls="nav"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<script>
+  import { initNav } from "@/scripts/nav";
+  initNav();
+</script>
+
+<style>
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .burger span {
+    display: block;
+    width: 20px;
+    height: 4px;
+    background: var(--ink);
+  }
+
+  @media (max-width: 780px) {
+    .burger {
+      display: flex;
+    }
+  }
+</style>

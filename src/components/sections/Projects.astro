@@ -1,0 +1,270 @@
+---
+import SectionHead from "@/components/ui/SectionHead.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { projects } from "@/data/projects";
+---
+
+<section class="sec" id="proyectos">
+  <div class="wrap">
+    <SectionHead tag="03 · Registro" title="Trabajos recientes" number="03" />
+
+    <div class="proj">
+      <div
+        class="proj-list panel reveal"
+        role="tablist"
+        aria-label="Proyectos"
+        aria-orientation="vertical"
+      >
+        {projects.map((project, i) => (
+          <button
+            class="pj"
+            type="button"
+            role="tab"
+            id={`tab-${i}`}
+            aria-controls="pane"
+            aria-selected={i === 0 ? "true" : "false"}
+            data-i={i}
+            tabindex={i === 0 ? "0" : "-1"}
+          >
+            <span class="arw" aria-hidden="true">
+              ▶
+            </span>
+            <span class="num">{String(i + 1).padStart(2, "0")}</span>
+            <span class="nm">{project.name}</span>
+            <span class="st">{project.type}</span>
+          </button>
+        ))}
+      </div>
+
+      <div
+        class="proj-pane panel reveal"
+        id="pane"
+        role="tabpanel"
+        aria-labelledby="tab-0"
+        tabindex="0"
+      >
+        <div class="pd-stage">
+          <div class="stub" aria-hidden="true">
+            <span class="r1"></span>
+            <span class="r2"></span>
+            <span class="r3"></span>
+            <span class="r4"></span>
+          </div>
+          <span class="cap">Vista previa</span>
+        </div>
+
+        <div class="pd-body">
+          <div class="pd-tags" id="pdTags"></div>
+          <h3 class="pd-title" id="pdTitle"></h3>
+          <p class="pd-desc" id="pdDesc"></p>
+          <div class="pd-links" id="pdLinks">
+            <a class="chip-link" id="pdRepo" href="#" hidden>
+              <Icon name="i-repo" />
+              Código
+            </a>
+            <a class="chip-link" id="pdDemo" href="#" hidden>
+              <Icon name="i-link" />
+              Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initProjects } from "@/scripts/projects";
+  initProjects();
+</script>
+
+<style>
+  .proj {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .proj-list {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pj {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+    padding: 16px 12px;
+    background: transparent;
+    border: 4px solid transparent;
+    border-radius: 4px;
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+    transition:
+      background 0.12s steps(2),
+      color 0.12s steps(2);
+  }
+  .pj .arw {
+    color: var(--sel);
+    font-size: 12px;
+    opacity: 0;
+  }
+  .pj .num {
+    font: 900 12px/1 var(--font-pix);
+    color: var(--muted);
+  }
+  .pj .nm {
+    flex: 1;
+    font: 700 15px/1.2 var(--font-body);
+  }
+  .pj .st {
+    font: 700 9px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pj:hover {
+    background: var(--panel-2);
+  }
+  .pj[aria-selected="true"] {
+    background: var(--sel);
+    color: var(--sel-ink);
+    border-color: var(--line);
+  }
+  .pj[aria-selected="true"] .arw {
+    opacity: 1;
+    color: var(--sel-ink);
+  }
+  .pj[aria-selected="true"] .num,
+  .pj[aria-selected="true"] .st {
+    color: var(--sel-ink);
+  }
+  .pj:focus-visible {
+    outline: 4px solid var(--amber);
+    outline-offset: 2px;
+  }
+
+  .proj-pane {
+    padding: 24px;
+  }
+  .pd-stage {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--panel-2);
+    border: 4px solid var(--line);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .pd-stage .stub {
+    width: 82%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pd-stage .stub span {
+    display: block;
+    height: 12px;
+    background: var(--off);
+  }
+  .pd-stage .stub .r1 {
+    width: 46%;
+    height: 20px;
+    background: var(--blue);
+  }
+  .pd-stage .stub .r2 {
+    width: 88%;
+  }
+  .pd-stage .stub .r3 {
+    width: 70%;
+  }
+  .pd-stage .stub .r4 {
+    width: 78%;
+  }
+  .pd-stage .cap {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    padding: 4px 8px;
+    background: var(--ink);
+    color: var(--bg);
+    font: 700 9px/1 var(--font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .pd-body {
+    padding-top: 20px;
+  }
+  .pd-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .pd-tags :global(span) {
+    padding: 4px 10px;
+    border: 3px solid var(--line);
+    border-radius: 4px;
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--panel-2);
+  }
+  .pd-title {
+    font: 900 24px/1.1 var(--font-pix);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pd-desc {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .pd-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .pd-links[hidden],
+  .chip-link[hidden] {
+    display: none;
+  }
+  .chip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 4px solid var(--line);
+    border-radius: var(--r);
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--panel);
+    transition:
+      transform 0.1s steps(2),
+      background 0.12s steps(2),
+      color 0.12s steps(2);
+  }
+  .chip-link:hover {
+    background: var(--ink);
+    color: var(--bg);
+    transform: translate(-2px, -2px);
+  }
+  .chip-link :global(svg) {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    shape-rendering: crispEdges;
+  }
+
+  @media (max-width: 1000px) {
+    .proj {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

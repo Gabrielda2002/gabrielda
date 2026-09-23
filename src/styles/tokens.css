@@ -1,0 +1,80 @@
+/* -------------------------------------------------------------------------
+   Design tokens — sistema de consola / pixel-art.
+   Valores copiados VERBATIM del diseño original (no modificar).
+   ------------------------------------------------------------------------- */
+
+:root {
+  /* ---- acentos vivos ---- */
+  --blue: #2f8fe0;
+  --sky: #5eb6f2;
+  --lime: #7ed44a;
+  --amber: #ffc531;
+  --coral: #ff6f5e;
+  --sun: #ffd34e;
+
+  /* ---- mundo (día) ---- */
+  --w-sky-1: #a8ddff;
+  --w-sky-2: #6fbfef;
+  --w-sky-3: #3789d4;
+  --w-hill-a: #8bd64b;
+  --w-hill-b: #56b23a;
+  --w-grass-1: #3e9b3f;
+  --w-grass-2: #2a7336;
+  --w-town: #2b5f8f;
+
+  /* ---- tema día ---- */
+  --bg: #e7f0f8;
+  --bg-2: #d8e7f4;
+  --panel: #ffffff;
+  --panel-2: #f2f7fc;
+  --ink: #0e1a2c;
+  --muted: #5a6c83;
+  --line: #0e1a2c;
+  --sel: #2f8fe0;
+  --sel-ink: #ffffff;
+  --off: #c9d8e6;
+  --sh: rgba(14, 26, 44, 0.2);
+  --bevel-hi: rgba(255, 255, 255, 0.95);
+  --bevel-lo: rgba(14, 26, 44, 0.14);
+  --dither: rgba(14, 26, 44, 0.16);
+  --scan: rgba(14, 26, 44, 0.045);
+
+  /* ---- tipografía ---- */
+  --font-pix:
+    "Press Start 2P", "Silkscreen", "MS Gothic", "MS PGothic", "DotGothic16",
+    "Courier New", monospace;
+  --font-body:
+    "DotGothic16", "MS Gothic", "MS PGothic", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Consolas", "SF Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  --u: 8px;
+  --r: 8px; /* radio de caja de menú (las cajas de consola son redondeadas) */
+}
+
+[data-theme="night"] {
+  --w-sky-1: #24356f;
+  --w-sky-2: #18265c;
+  --w-sky-3: #0d1738;
+  --w-hill-a: #1f5550;
+  --w-hill-b: #17414c;
+  --w-grass-1: #123644;
+  --w-grass-2: #0c2733;
+  --w-town: #6e8fd0;
+
+  --bg: #0a1130;
+  --bg-2: #070c22;
+  --panel: #141c4a;
+  --panel-2: #1c2560;
+  --ink: #eaf1ff;
+  --muted: #98a4cf;
+  --line: #040a24;
+  --sel: #63b8f5;
+  --sel-ink: #04102a;
+  --off: #2c376e;
+  --sh: rgba(0, 0, 0, 0.58);
+  --bevel-hi: rgba(255, 255, 255, 0.12);
+  --bevel-lo: rgba(0, 0, 0, 0.45);
+  --dither: rgba(234, 241, 255, 0.13);
+  --scan: rgba(234, 241, 255, 0.05);
+}

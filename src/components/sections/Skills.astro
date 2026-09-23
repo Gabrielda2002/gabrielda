@@ -1,0 +1,160 @@
+---
+import SectionHead from "@/components/ui/SectionHead.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { skillGroups, totalTechnologies } from "@/data/skills";
+---
+
+<section class="sec" id="skills">
+  <div class="wrap">
+    <SectionHead
+      tag="02 · Equipo"
+      title="Tecnologías que uso a diario"
+      number="02"
+    />
+
+    <div class="skills-grid">
+      {skillGroups.map((group) => (
+        <div class="sp panel reveal">
+          <div class="sp-head">
+            <span class="ico">
+              <Icon name={group.icon} />
+            </span>
+            <span class="t">
+              <b>{group.title}</b>
+              <small>{group.subtitle}</small>
+            </span>
+          </div>
+          <div class="sp-body">
+            {group.items.map((item) => (
+              <div class="sp-row">
+                <span class="arw">▶</span>
+                <span class="nm">{item.name}</span>
+                <span class="qt">{item.tag}</span>
+              </div>
+            ))}
+          </div>
+          <div class="sp-foot">
+            <span>
+              {group.items.length} de {totalTechnologies} tecnologías
+            </span>
+            <span>◆</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .sp {
+    padding: 0;
+    overflow: hidden;
+  }
+  .sp-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-bottom: 4px solid var(--line);
+    background: var(--panel-2);
+  }
+  .sp-head .ico {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    background: var(--blue);
+    color: #06152b;
+    border: 4px solid var(--line);
+  }
+  .sp-head .ico :global(svg) {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    shape-rendering: crispEdges;
+  }
+  :global([data-theme="night"]) .sp-head .ico {
+    color: #04102a;
+  }
+  .sp-head .t b {
+    display: block;
+    font: 700 12px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .sp-head .t small {
+    font: 700 9px/1 var(--font-mono);
+    letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+  .sp-body {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sp-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 12px 12px 8px;
+    border-radius: 4px;
+    font: 400 15px/1 var(--font-body);
+  }
+  .sp-row .arw {
+    color: var(--sel);
+    opacity: 0;
+    font-size: 12px;
+    transform: translateX(-4px);
+    transition:
+      opacity 0.12s steps(2),
+      transform 0.12s steps(2);
+  }
+  .sp-row:hover {
+    background: var(--sel);
+    color: var(--sel-ink);
+  }
+  .sp-row:hover .arw {
+    opacity: 1;
+    transform: none;
+    color: var(--sel-ink);
+  }
+  .sp-row .nm {
+    flex: 1;
+  }
+  .sp-row .qt {
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .sp-row:hover .qt {
+    color: var(--sel-ink);
+  }
+  .sp-foot {
+    padding: 12px 16px;
+    border-top: 4px solid var(--line);
+    background: var(--panel-2);
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1000px) {
+    .skills-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 780px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

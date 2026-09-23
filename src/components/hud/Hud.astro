@@ -1,0 +1,96 @@
+---
+import Nav from "@/components/hud/Nav.astro";
+import ThemeToggle from "@/components/hud/ThemeToggle.astro";
+import Burger from "@/components/hud/Burger.astro";
+import { site } from "@/data/site";
+---
+
+<header class="hud">
+  <div class="wrap hud-in">
+    <a class="brand" href="#inicio">
+      <span class="avatar" aria-hidden="true">
+        GD
+      </span>
+      <span class="brand-txt">
+        <b>{site.brandName}</b>
+        <small>{site.brandSubtitle}</small>
+      </span>
+    </a>
+
+    <Nav />
+
+    <div class="hud-btns">
+      <ThemeToggle />
+      <Burger />
+    </div>
+  </div>
+</header>
+
+<script>
+  // El scroll-spy se inicializa aquí, en el componente que ensambla todo el
+  // HUD, porque es una preocupación de página (no del nav individual) y así
+  // queda coordinada junto a los demás scripts del HUD.
+  import { initScrollSpy } from "@/scripts/scroll-spy";
+  initScrollSpy();
+</script>
+
+<style>
+  .hud {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    background: var(--panel);
+    border-bottom: 4px solid var(--line);
+    box-shadow: 0 4px 0 0 var(--bevel-lo);
+    transition:
+      background 0.24s steps(4),
+      border-color 0.24s steps(4);
+  }
+  .hud-in {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 72px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    background: var(--blue);
+    color: #06152b;
+    border: 4px solid var(--line);
+    font: 700 13px/1 var(--font-mono);
+    letter-spacing: 0.04em;
+  }
+  :global([data-theme="night"]) .avatar {
+    background: var(--amber);
+    color: #22160a;
+  }
+  .brand-txt {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .brand-txt b {
+    font: 700 12px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .brand-txt small {
+    font: 400 10px/1 var(--font-mono);
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .hud-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+</style>

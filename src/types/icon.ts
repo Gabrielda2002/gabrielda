@@ -1,0 +1,17 @@
+export type IconName =
+  | "p-sun"
+  | "p-cloud"
+  | "p-tree"
+  | "p-town"
+  | "i-day"
+  | "i-night"
+  | "i-code"
+  | "i-server"
+  | "i-db"
+  | "i-mail"
+  | "i-repo"
+  | "i-id"
+  | "i-play"
+  | "i-arrow"
+  | "i-up"
+  | "i-link";

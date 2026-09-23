@@ -1,0 +1,60 @@
+---
+import { site } from "@/data/site";
+
+const [first, ...rest] = site.name.split(" ");
+const firstWord = first;
+const restWords = rest.join(" ");
+---
+
+<h1 class="title">
+  <span class="t-pre">Hola, soy</span>
+  <span class="t-big">{firstWord}</span>
+  <span class="t-sub">{restWords}</span>
+</h1>
+
+<style>
+  .title {
+    margin-bottom: 28px;
+  }
+  .title .t-pre {
+    display: block;
+    font: 700 12px/1 var(--font-mono);
+    letter-spacing: 0.34em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.78;
+  }
+  .title .t-big {
+    display: block;
+    font: 900 clamp(44px, 7vw, 92px) / 1 var(--font-pix);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--panel);
+    text-shadow:
+      4px 0 0 var(--line),
+      0 4px 0 var(--line),
+      8px 8px 0 var(--line);
+  }
+  .title .t-sub {
+    display: block;
+    margin-top: 8px;
+    font: 900 clamp(28px, 4.4vw, 56px) / 1 var(--font-pix);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--sun);
+    text-shadow:
+      4px 0 0 var(--line),
+      0 4px 0 var(--line),
+      8px 8px 0 var(--line);
+  }
+
+  @media (max-width: 520px) {
+    .title .t-big {
+      text-shadow:
+        3px 0 0 var(--line),
+        0 3px 0 var(--line),
+        5px 5px 0 var(--line);
+    }
+  }
+</style>

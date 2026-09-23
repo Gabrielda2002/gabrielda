@@ -1,0 +1,27 @@
+---
+import type { IconName } from "@/types/icon";
+
+interface Props {
+  name: IconName;
+  viewBox?: string;
+  class?: string;
+  preserveAspectRatio?: string;
+}
+
+const {
+  name,
+  viewBox = "0 0 16 16",
+  class: className,
+  preserveAspectRatio,
+} = Astro.props;
+---
+
+<svg
+  viewBox={viewBox}
+  class={className}
+  preserveAspectRatio={preserveAspectRatio}
+  aria-hidden="true"
+  focusable="false"
+>
+  <use href={`#${name}`} />
+</svg>

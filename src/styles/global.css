@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./pixel.css";
+
+/* -------------------------------------------------------------------------
+   Mapeo de tokens al tema de Tailwind v4.
+   `inline` enlaza directamente con las variables del sistema de diseño,
+   de modo que utilidades como `bg-panel`, `text-ink` o `font-pix` resuelvan
+   a los valores vivos (día / noche) sin doble indirección.
+   ------------------------------------------------------------------------- */
+@theme inline {
+  /* colores */
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-screen: var(--bg);
+  --color-sel: var(--sel);
+  --color-sel-ink: var(--sel-ink);
+  --color-off: var(--off);
+  --color-blue: var(--blue);
+  --color-sky: var(--sky);
+  --color-lime: var(--lime);
+  --color-amber: var(--amber);
+  --color-coral: var(--coral);
+  --color-sun: var(--sun);
+
+  /* tipografía */
+  --font-pix: var(--font-pix);
+  --font-body:
+    "DotGothic16", "MS Gothic", "MS PGothic", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-mono);
+}
+
+/* Variante `night:` que aplica tanto al `<html>` como a sus descendientes. */
+@custom-variant night (&:where([data-theme="night"], [data-theme="night"] *));
+
+/* -------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/1.7 var(--font-body);
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
+    font-smooth: never;
+    text-rendering: optimizeSpeed;
+    transition:
+      background 0.24s steps(4),
+      color 0.24s steps(4);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: repeating-linear-gradient(
+      0deg,
+      var(--scan) 0 1px,
+      transparent 1px 4px
+    );
+    background-size: 100% 4px;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Los anclajes (`#inicio`, `#skills`, …) quedarían ocultos tras el HUD fijo
+     (~72px de alto) al navegar por el menú. `scroll-margin-top` reserva un
+     margen de 96px para que cada destino asome por debajo del HUD. */
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  :focus-visible {
+    outline: 4px solid var(--amber);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

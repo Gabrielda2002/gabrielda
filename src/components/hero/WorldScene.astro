@@ -1,0 +1,208 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+---
+
+<div class="world" aria-hidden="true">
+  <div class="w-sky"></div>
+  <div class="w-dith dith"></div>
+  <div class="w-sun">
+    <Icon name="p-sun" />
+  </div>
+  <div class="w-cloud c1">
+    <Icon name="p-cloud" viewBox="0 0 20 10" />
+  </div>
+  <div class="w-cloud c2">
+    <Icon name="p-cloud" viewBox="0 0 20 10" />
+  </div>
+  <div class="w-cloud c3">
+    <Icon name="p-cloud" viewBox="0 0 20 10" />
+  </div>
+  <div class="w-town">
+    <Icon name="p-town" viewBox="0 0 200 20" preserveAspectRatio="none" />
+  </div>
+  <div class="w-hill h1"></div>
+  <div class="w-hill h2"></div>
+  <div class="w-hill h2b"></div>
+  <div class="w-ground-d dith"></div>
+  <div class="w-ground"></div>
+  <div class="w-tree t1">
+    <Icon name="p-tree" viewBox="0 0 14 20" />
+  </div>
+  <div class="w-tree t2">
+    <Icon name="p-tree" viewBox="0 0 14 20" />
+  </div>
+  <div class="w-tree t3">
+    <Icon name="p-tree" viewBox="0 0 14 20" />
+  </div>
+</div>
+
+<style>
+  .world {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* Suavizado de silueta: 0 = borde pixel duro; prueba 0.6 (sutil) o 1.2 (marcado). */
+    --px-soft: 0;
+  }
+  .world :global(svg) {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: var(--px-soft);
+    stroke-linejoin: round;
+    shape-rendering: auto;
+  }
+  .w-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      var(--w-sky-1) 0 28%,
+      var(--w-sky-2) 28% 62%,
+      var(--w-sky-3) 62% 100%
+    );
+  }
+  .w-dith {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 22%;
+    height: 40%;
+    opacity: 0.5;
+  }
+  .w-sun {
+    position: absolute;
+    top: 11%;
+    right: 12%;
+    width: 128px;
+    height: 128px;
+    color: var(--sun);
+  }
+  .w-cloud {
+    position: absolute;
+    color: #ffffff;
+    opacity: 0.92;
+  }
+  :global([data-theme="night"]) .w-cloud {
+    color: #c9d6ff;
+    opacity: 0.5;
+  }
+  .c1 {
+    top: 14%;
+    left: 8%;
+    width: 160px;
+    height: 80px;
+    animation: drift 42s steps(24) infinite;
+  }
+  .c2 {
+    top: 25%;
+    left: 42%;
+    width: 112px;
+    height: 56px;
+    animation: drift 58s steps(28) infinite reverse;
+  }
+  .c3 {
+    top: 9%;
+    left: 66%;
+    width: 88px;
+    height: 44px;
+    animation: drift 50s steps(22) infinite;
+  }
+  @keyframes drift {
+    from {
+      transform: translateX(-24px);
+    }
+    to {
+      transform: translateX(24px);
+    }
+  }
+
+  .w-hill {
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  }
+  .h1 {
+    bottom: 24%;
+    height: 34%;
+    background: var(--w-hill-a);
+  }
+  .h2 {
+    bottom: 20%;
+    height: 26%;
+    left: -30%;
+    width: 90%;
+    background: var(--w-hill-b);
+  }
+  .h2b {
+    bottom: 20%;
+    height: 22%;
+    left: 40%;
+    width: 100%;
+    background: var(--w-hill-b);
+  }
+  .w-town {
+    position: absolute;
+    bottom: 21%;
+    left: 0;
+    right: 0;
+    height: 12%;
+    color: var(--w-town);
+    opacity: 0.85;
+  }
+  .w-ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 21%;
+    background: var(--w-grass-1);
+    border-top: 4px solid var(--line);
+  }
+  .w-ground-d {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 21%;
+    height: 40px;
+  }
+  .w-tree {
+    position: absolute;
+    bottom: 20%;
+    color: var(--w-grass-2);
+  }
+  .t1 {
+    left: 6%;
+    width: 56px;
+    height: 80px;
+  }
+  .t2 {
+    left: 78%;
+    width: 72px;
+    height: 100px;
+  }
+  .t3 {
+    left: 88%;
+    width: 48px;
+    height: 68px;
+  }
+
+  @media (max-width: 780px) {
+    .w-sun {
+      width: 88px;
+      height: 88px;
+    }
+    .c1,
+    .c2 {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .w-cloud {
+      animation: none;
+    }
+  }
+</style>

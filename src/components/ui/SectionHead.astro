@@ -1,0 +1,57 @@
+---
+interface Props {
+  tag: string;
+  title: string;
+  number: string;
+}
+
+const { tag, title, number } = Astro.props;
+---
+
+<header class="sec-head reveal">
+  <div>
+    <span class="sec-tag">{tag}</span>
+    <h2 class="sec-title">{title}</h2>
+  </div>
+  <span class="sec-no" aria-hidden="true">
+    {number}
+  </span>
+</header>
+
+<style>
+  .sec-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .sec-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.22em;
+    color: var(--coral);
+    text-transform: uppercase;
+  }
+  .sec-title {
+    font: 900 clamp(24px, 3.4vw, 40px) / 1.15 var(--font-pix);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .sec-no {
+    font: 900 40px/1 var(--font-pix);
+    color: transparent;
+    -webkit-text-stroke: 4px var(--off);
+  }
+
+  @media (max-width: 780px) {
+    .sec-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .sec-no {
+      display: none;
+    }
+  }
+</style>

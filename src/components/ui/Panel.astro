@@ -1,0 +1,19 @@
+---
+interface Props {
+  variant?: "default" | "flat" | "sunken";
+  class?: string;
+}
+
+const { variant = "default", class: className } = Astro.props;
+
+const variantClass =
+  variant === "flat"
+    ? "panel-flat"
+    : variant === "sunken"
+      ? "panel-sunken"
+      : "";
+---
+
+<div class:list={["panel", variantClass, className]}>
+  <slot />
+</div>

@@ -1,0 +1,167 @@
+---
+import StatBar from "@/components/ui/StatBar.astro";
+import { site } from "@/data/site";
+import { stats } from "@/data/stats";
+
+// TODO: cuando `site.photo` apunte a la foto real, aquí se renderiza la imagen
+// en lugar del monograma "GD".
+---
+
+<aside class="pcard panel reveal" aria-label="Ficha de jugador">
+  <div class="pc-screen">
+    <div class="pc-photo">
+      {site.photo ? (
+        <img src={site.photo} alt="Retrato de Gabriel Duarte" />
+      ) : (
+        <span class="mono" aria-hidden="true">
+          GD
+        </span>
+      )}
+    </div>
+    <div class="pc-plate">
+      <span>{site.name}</span>
+      <span class="lv">★ Full Stack</span>
+    </div>
+  </div>
+
+  <dl class="pc-rows">
+    <div class="prow">
+      <dt>Rol</dt>
+      <dd>{site.heroCard.role}</dd>
+    </div>
+    <div class="prow">
+      <dt>Enfoque</dt>
+      <dd>{site.heroCard.focus}</dd>
+    </div>
+    <div class="prow">
+      <dt>Base</dt>
+      <dd>{site.heroCard.stack}</dd>
+    </div>
+  </dl>
+
+  <div class="roster">
+    {stats.map((stat) => (
+      <div class="rstat">
+        <span class="n">{stat.value}</span>
+        <span class="l">{stat.label}</span>
+        <StatBar filled={stat.filled} total={stat.total} tone={stat.tone} />
+      </div>
+    ))}
+  </div>
+</aside>
+
+<style>
+  .pcard {
+    padding: 16px;
+    max-width: 340px;
+    justify-self: end;
+    width: 100%;
+  }
+  .pc-screen {
+    position: relative;
+    padding: 8px;
+    background: var(--panel-2);
+    border: 4px solid var(--line);
+  }
+  .pc-photo {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--bg-2);
+    display: grid;
+    place-items: center;
+  }
+  .pc-photo .mono {
+    font: 900 56px/1 var(--font-pix);
+    color: var(--muted);
+  }
+  .pc-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.25) contrast(1.05);
+  }
+  .pc-plate {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background: var(--ink);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .pc-plate .lv {
+    color: var(--amber);
+  }
+  .pc-rows {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .prow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px dashed var(--off);
+  }
+  .prow:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .prow dt {
+    font: 700 10px/1.4 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .prow dd {
+    font: 400 14px/1.4 var(--font-body);
+    text-align: right;
+  }
+  .roster {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .rstat {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    align-items: center;
+  }
+  .rstat .n {
+    font: 900 22px/1 var(--font-pix);
+    letter-spacing: -0.01em;
+  }
+  .rstat .l {
+    grid-column: 2;
+    font: 700 9px/1.3 var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+  .rstat :global(.bar) {
+    grid-column: 1 / -1;
+  }
+  .rstat :global(.bar i) {
+    height: 12px;
+  }
+
+  @media (max-width: 1000px) {
+    .pcard {
+      justify-self: start;
+      max-width: 420px;
+    }
+  }
+</style>
