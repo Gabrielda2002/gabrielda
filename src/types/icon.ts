@@ -1,6 +1,8 @@
 export type IconName =
   | "p-sun"
+  | "p-moon"
   | "p-cloud"
+  | "p-cloud-2"
   | "p-tree"
   | "p-town"
   | "i-day"
