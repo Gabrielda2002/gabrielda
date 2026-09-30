@@ -5,6 +5,8 @@ export type IconName =
   | "p-cloud-2"
   | "p-tree"
   | "p-town"
+  | "p-ridge-back"
+  | "p-ridge-front"
   | "i-day"
   | "i-night"
   | "i-code"

@@ -1,8 +1,3 @@
----
-// Sprite de símbolos pixel-art (18 piezas; mundo con contorno y tonos, iconos del HUD).
-// `<svg>` oculto que centraliza los símbolos referenciados por <use>.
----
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="p-sun" viewBox="0 0 16 16">
     <rect x="6" y="0" width="4" height="1" style="fill: var(--sun-line, #0e1a2c); stroke: var(--sun-line, #0e1a2c)"></rect>
@@ -184,6 +179,40 @@
     <rect x="150" y="5" width="12" height="7"></rect>
     <rect x="153" y="3" width="6" height="2"></rect>
     <rect x="172" y="9" width="20" height="3"></rect>
+    <rect x="10" y="8" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="18" y="8" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="33" y="9" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="43" y="9" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="58" y="6" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="64" y="9" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="82" y="13" width="2" height="1" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="90" y="13" width="2" height="1" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="106" y="8" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="114" y="8" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="132" y="9" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="152" y="7" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="157" y="10" width="2" height="2" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="178" y="10" width="2" height="1" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+    <rect x="186" y="10" width="2" height="1" style="fill: var(--town-light, transparent); stroke: var(--town-light, transparent)"></rect>
+
+  </symbol>
+  <symbol id="p-ridge-back" viewBox="0 0 240 33">
+    <path d="M0 33 L0 20 L10 20 L17 18 L24 16 L31 14 L36 13 L44 15 L56 17 L64 17 L71 15 L75 13 L80 11 L84 9 L88 7 L92 5 L97 7 L101 9 L105 11 L110 13 L114 15 L118 17 L120 19 L126 19 L133 17 L140 15 L148 14 L158 16 L168 17 L176 17 L180 15 L185 13 L189 11 L194 9 L198 7 L203 5 L204 4 L209 6 L213 8 L218 10 L222 12 L227 14 L231 16 L236 18 L240 18 L240 33 Z" style="fill: var(--ridge-base, #8bd64b); stroke: var(--ridge-line, #0e1a2c); stroke-width: var(--ridge-line-w, 1)"></path>
+    <rect x="91" y="6" width="3" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="89" y="7" width="7" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="87" y="8" width="11" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="85" y="9" width="15" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="83" y="10" width="8" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="94" y="10" width="8" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="203" y="5" width="3" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="201" y="6" width="7" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="199" y="7" width="11" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="197" y="8" width="15" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="195" y="9" width="8" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+    <rect x="206" y="9" width="8" height="1" style="fill: var(--ridge-snow, #f2f7fc); stroke: none"></rect>
+  </symbol>
+  <symbol id="p-ridge-front" viewBox="0 0 240 14">
+    <path d="M0 14 L0 5 L24 5 L38 4 L50 2 L64 3 L80 4 L96 5 L110 4 L122 2 L136 3 L150 4 L166 5 L178 4 L190 2 L204 3 L218 4 L232 5 L240 5 L240 14 Z" style="fill: var(--ridge-base, #56b23a); stroke: var(--ridge-line, #0e1a2c); stroke-width: var(--ridge-line-w, 1)"></path>
   </symbol>
   <symbol id="i-day" viewBox="0 0 16 16">
     <rect x="6" y="0" width="4" height="2"></rect>

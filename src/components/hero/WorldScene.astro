@@ -18,12 +18,15 @@ import Icon from "@/components/ui/Icon.astro";
   <div class="w-cloud c3">
     <Icon name="p-cloud" viewBox="0 0 20 10" />
   </div>
+  <div class="w-ridge">
+    <Icon name="p-ridge-back" viewBox="0 0 240 33" preserveAspectRatio="none" />
+  </div>
+  <div class="w-ridge w-ridge-front">
+    <Icon name="p-ridge-front" viewBox="0 0 240 14" preserveAspectRatio="none" />
+  </div>
   <div class="w-town">
     <Icon name="p-town" viewBox="0 0 200 20" preserveAspectRatio="none" />
   </div>
-  <div class="w-hill h1"></div>
-  <div class="w-hill h2"></div>
-  <div class="w-hill h2b"></div>
   <!-- <div class="w-ground-d dith"></div> -->
   <div class="w-ground"></div>
   <div class="w-tree t1">
@@ -144,30 +147,25 @@ import Icon from "@/components/ui/Icon.astro";
     }
   }
 
-  .w-hill {
+  .w-ridge {
     position: absolute;
-    left: -10%;
-    width: 120%;
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    left: 0;
+    right: 0;
+    bottom: 21%;
+    height: 32%;
+    --ridge-line: #0e1a2c;
+    --ridge-base: var(--w-hill-a);
+    --ridge-snow: #f2f7fc;
+    /* Grosor del contorno de las cordilleras: prueba 1 / 0.75 / 0.5. */
+    --ridge-line-w: 0.75;
   }
-  .h1 {
-    bottom: 24%;
-    height: 34%;
-    background: var(--w-hill-a);
-  }
-  .h2 {
-    bottom: 20%;
+  .w-ridge-front {
     height: 26%;
-    left: -30%;
-    width: 90%;
-    background: var(--w-hill-b);
+    --ridge-base: var(--w-hill-b);
   }
-  .h2b {
-    bottom: 20%;
-    height: 22%;
-    left: 40%;
-    width: 100%;
-    background: var(--w-hill-b);
+  :global([data-theme="night"]) .w-ridge {
+    --ridge-line: #040a24;
+    --ridge-snow: #b9c6ea;
   }
   .w-town {
     position: absolute;
@@ -177,6 +175,11 @@ import Icon from "@/components/ui/Icon.astro";
     height: 12%;
     color: var(--w-town);
     opacity: 0.85;
+    --town-light: transparent;
+  }
+
+  :global([data-theme="night"]) .w-town {
+    --town-light: var(--amber);
   }
   .w-ground {
     position: absolute;
