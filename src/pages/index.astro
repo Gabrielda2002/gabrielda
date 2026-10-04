@@ -29,5 +29,7 @@ import ToTop from "@/components/layout/ToTop.astro";
   // Aparición por scroll: preocupación global de página, por eso se inicializa
   // aquí una sola vez para todos los elementos `.reveal` del sitio.
   import { initReveal } from "@/scripts/reveal";
+  import { initParallax } from "@/scripts/parallax";
   initReveal();
+  initParallax();
 </script>

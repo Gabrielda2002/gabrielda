@@ -290,6 +290,7 @@ import Icon from "@/components/ui/Icon.astro";
     position: absolute;
     inset: 0;
     z-index: 0;
+    overflow: hidden;
     /* Suavizado de silueta: 0 = borde pixel duro; prueba 0.6 (sutil) o 1.2 (marcado). */
     --px-soft: 0;
   }
@@ -301,6 +302,40 @@ import Icon from "@/components/ui/Icon.astro";
     stroke-width: var(--px-soft);
     stroke-linejoin: round;
     shape-rendering: auto;
+  }
+  /* Parallax vertical: cada capa se retrasa un poco con el scroll del hero.
+     Cuanto más lejana la capa, mayor el factor. */
+  .w-sun {
+    transform: translateY(calc(var(--parallax, 0) * 0.35px));
+  }
+  .w-stars {
+    transform: translateY(calc(var(--parallax, 0) * 0.35px));
+  }
+  .w-ridge {
+    transform: translateY(calc(var(--parallax, 0) * 0.16px));
+  }
+  .w-ridge-far {
+    transform: translateY(calc(var(--parallax, 0) * 0.22px));
+  }
+  .w-ridge-front {
+    transform: translateY(calc(var(--parallax, 0) * 0.1px));
+  }
+  .w-town {
+    transform: translateY(calc(var(--parallax, 0) * 0.05px));
+  }
+  .w-smoke {
+    transform: translateY(calc(var(--parallax, 0) * 0.05px));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .w-sun,
+    .w-stars,
+    .w-ridge,
+    .w-ridge-far,
+    .w-ridge-front,
+    .w-town,
+    .w-smoke {
+      transform: none;
+    }
   }
   .w-stars {
     position: absolute;
