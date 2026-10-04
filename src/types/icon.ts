@@ -18,6 +18,7 @@ export type IconName =
   | "p-flower-2"
   | "p-ridge-back"
   | "p-ridge-front"
+  | "p-ridge-far"
   | "i-day"
   | "i-night"
   | "i-code"

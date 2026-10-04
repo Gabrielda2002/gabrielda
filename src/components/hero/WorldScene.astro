@@ -73,6 +73,13 @@ import Icon from "@/components/ui/Icon.astro";
   <div class="w-cloud c3">
     <Icon name="p-cloud" viewBox="0 0 20 10" />
   </div>
+  <div class="w-ridge w-ridge-far">
+    <Icon
+      name="p-ridge-far"
+      viewBox="0 0 240 36"
+      preserveAspectRatio="none"
+    />
+  </div>
   <div class="w-ridge">
     <Icon name="p-ridge-back" viewBox="0 0 240 33" preserveAspectRatio="none" />
   </div>
@@ -505,6 +512,13 @@ import Icon from "@/components/ui/Icon.astro";
   .w-ridge-front {
     height: 26%;
     --ridge-base: var(--w-hill-b);
+  }
+  .w-ridge-far {
+    height: 38%;
+    --ridge-base: #aede8c;
+  }
+  :global([data-theme="night"]) .w-ridge-far {
+    --ridge-base: #2a5a5e;
   }
   :global([data-theme="night"]) .w-ridge {
     --ridge-line: #040a24;
