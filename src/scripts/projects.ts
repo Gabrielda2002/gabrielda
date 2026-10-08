@@ -40,6 +40,8 @@ export function initProjects(): void {
   const pdDesc = document.getElementById("pdDesc");
   const pdLinks = document.getElementById("pdLinks");
   const pdRepo = document.getElementById("pdRepo");
+  const pdRepoText = document.getElementById("pdRepoText");
+  const pdRepoApi = document.getElementById("pdRepoApi");
   const pdDemo = document.getElementById("pdDemo");
 
   if (tabs.length === 0) return;
@@ -114,17 +116,29 @@ export function initProjects(): void {
     if (pdTitle) pdTitle.textContent = project.title;
     if (pdDesc) pdDesc.textContent = project.description;
 
-    const hasRepo = Boolean(project.repo);
-    const hasDemo = Boolean(project.demo);
+    const hasRepo = Boolean(project.repo && project.repo.trim() !== "");
+    const hasRepoApi = Boolean(project.repoApi && project.repoApi.trim() !== "");
+    const hasDemo = Boolean(project.demo && project.demo.trim() !== "");
+
     if (pdRepo) {
       pdRepo.hidden = !hasRepo;
       if (hasRepo) pdRepo.setAttribute("href", project.repo ?? "#");
+      if (pdRepoText) {
+        pdRepoText.textContent = hasRepoApi ? "Frontend" : "Código";
+      }
     }
+
+    if (pdRepoApi) {
+      pdRepoApi.hidden = !hasRepoApi;
+      if (hasRepoApi) pdRepoApi.setAttribute("href", project.repoApi ?? "#");
+    }
+
     if (pdDemo) {
       pdDemo.hidden = !hasDemo;
       if (hasDemo) pdDemo.setAttribute("href", project.demo ?? "#");
     }
-    if (pdLinks) pdLinks.hidden = !hasRepo && !hasDemo;
+
+    if (pdLinks) pdLinks.hidden = !hasRepo && !hasRepoApi && !hasDemo;
 
     if (focus) tabs[index].focus();
   }

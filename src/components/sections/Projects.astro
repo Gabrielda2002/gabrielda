@@ -61,11 +61,15 @@ import { projects } from "@/data/projects";
           <h3 class="pd-title" id="pdTitle"></h3>
           <p class="pd-desc" id="pdDesc"></p>
           <div class="pd-links" id="pdLinks">
-            <a class="chip-link" id="pdRepo" href="#" hidden>
+            <a class="chip-link" id="pdRepo" href="#" hidden target="_blank" rel="noopener noreferrer">
               <Icon name="i-repo" />
-              Código
+              <span id="pdRepoText">Código</span>
             </a>
-            <a class="chip-link" id="pdDemo" href="#" hidden>
+            <a class="chip-link" id="pdRepoApi" href="#" hidden target="_blank" rel="noopener noreferrer">
+              <Icon name="i-repo" />
+              API
+            </a>
+            <a class="chip-link" id="pdDemo" href="#" hidden target="_blank" rel="noopener noreferrer">
               <Icon name="i-link" />
               Demo
             </a>

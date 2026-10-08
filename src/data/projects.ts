@@ -1,54 +1,69 @@
 import type { Project } from "@/types/portfolio";
 
-// TODO: completar `repo`, `demo` e `image` con los datos reales de cada proyecto.
 export const projects: Project[] = [
   {
-    id: "mobile-app",
-    name: "Mobile App",
-    type: "App móvil",
-    tags: ["React Native", "Expo", "NativeWind", "NestJS", "TypeORM"],
-    title: "App Móvil Multiplataforma",
-    description:
-      "Aplicación móvil desarrollada con React Native, Expo y NativeWind. Arquitectura backend modular con NestJS, autenticación segura y persistencia de datos con TypeORM.",
-    repo: "",
-    demo: "",
-    image: "",
-  },
-  {
-    id: "taskflow",
-    name: "TaskFlow",
+    id: "nordvital-ips",
+    name: "Nordvital IPS",
     type: "Web app",
-    tags: ["React", "Express", "PostgreSQL"],
-    title: "TaskFlow",
+    tags: ["Astro", "React", "Tailwind CSS", "TypeScript"],
+    title: "Portal Institucional & Red de Sedes",
     description:
-      "App de gestión de tareas colaborativas con tableros Kanban, tiempo real y autenticación JWT. Diseñada para equipos pequeños.",
-    repo: "",
-    demo: "",
-    image: "",
+      "Rediseño y desarrollo de la plataforma web institucional para Nordvital IPS (red con 11 sedes en Colombia). Arquitectura de islas con Astro y React, catálogo de servicios y medicina laboral, mapas interactivos georreferenciados, carruseles dinámicos y sistema de radicación PQRSFD.",
+    repo: "https://github.com/Gabrielda2002/Page-Nordvital",
+    demo: "https://nordvitalips.com",
+    image: "/projects/nordvitalips.webp",
   },
 
   {
-    id: "devblog",
-    name: "DevBlog",
+    id: "nordvital-ci",
+    name: "Nordvital CI",
     type: "Sitio",
-    tags: ["Astro", "TypeScript", "Tailwind"],
-    title: "DevBlog",
+    tags: ["Astro", "React", "Tailwind CSS", "TypeScript"],
+    title: "Centro de Investigación Clínica",
     description:
-      "Blog personal de tecnología con Astro, MDX, búsqueda full-text y modo oscuro. Optimizado para Core Web Vitals.",
-    repo: "",
+      "Plataforma web institucional y de captación de voluntarios para el Centro de Investigación Clínica de Nordvital IPS. Desarrollada con arquitectura de islas (Astro 5 y React 19), catálogo de ensayos clínicos, comités de ética, sistema de postulación con validaciones estrictas (React Hook Form, Zod) y suite de pruebas unitarias con Jest.",
+    repo: "https://github.com/Gabrielda2002/remake-landing-page-CI",
+    demo: "https://investigation.nordvitalips.com",
+    image: "/projects/nordvital-ci.webp",
+  },
+
+  {
+    id: "savebridge",
+    name: "SaveBridge",
+    type: "App móvil",
+    tags: ["React Native", "Expo", "Node.js", "TypeScript"],
+    title: "Sincronizador Multiplataforma de Partidas",
+    description:
+      "Ecosistema para sincronizar bidireccionalmente partidas guardadas de emuladores y videojuegos entre Windows y Android en red local. Monorepo con app móvil en React Native y Expo (escaneo de almacenamiento Scoped Storage, emparejamiento por QR con cámara y cálculo hash SHA-256) y agente de escritorio en Node.js con servidor REST, detección de conflictos y respaldos automáticos.",
+    repo: "https://github.com/Gabrielda2002/SaveBridge",
     demo: "",
-    image: "",
+    image: "/projects/saveBridge.webp",
+  },
+
+
+  {
+    id: "nordvital-app",
+    name: "Nordvital App",
+    type: "Full Stack",
+    tags: ["React", "Node.js", "TypeORM", "TypeScript", "MySQL"],
+    title: "Sistema de Radicación & Gestión Hospitalaria",
+    description:
+      "Plataforma integral Full Stack de gestión hospitalaria y radicación médica para Nordvital IPS. Frontend SPA reactivo desarrollado con React 19, Tailwind CSS, TanStack Query y Recharts; conectado a un backend modular con Node.js, Express, TypeORM y MySQL, autenticación JWT con roles y permisos, WebSockets en tiempo real y generación masiva de reportes en Excel/PDF.",
+    repo: "https://github.com/Gabrielda2002/radicar-app-frond",
+    repoApi: "https://github.com/Gabrielda2002/Api-nordvital",
+    demo: "https://app.nordvitalips.com",
+    image: "/projects/app.nordvitalips.webp",
   },
   {
-    id: "invoicely",
-    name: "Invoicely",
+    id: "dashboard-nt",
+    name: "Dashboard NT",
     type: "Panel",
-    tags: ["Node.js", "Express", "MySQL"],
-    title: "Invoicely",
+    tags: ["NestJS", "Prisma", "Node.js", "TypeScript", "MySQL"],
+    title: "API Analítica de Costos Médicos vs. Nota Técnica",
     description:
-      "Sistema de facturación web con generación de PDF, panel de métricas y multi-tenant. Integración con pasarelas de pago.",
-    repo: "",
+      "API REST de analítica financiera y auditoría de salud para la alta gerencia de Nordvital IPS. Desarrollada con NestJS 11 y Prisma 7 sobre un motor de base de datos con más de 381k registros médicos consolidados (SAP/PLENUS/PANA); provee métricas para 5 dashboards gerenciales: Pareto 80/20 de procedimientos (CUPS), desvíos de Nota Técnica, oportunidad médica y programas PyM/RIAS con caché en memoria y suite de pruebas en Jest.",
+    repo: "https://github.com/Gabrielda2002/backend-auto",
     demo: "",
-    image: "",
+    image: "/projects/dashboard-nt.webp",
   },
 ];

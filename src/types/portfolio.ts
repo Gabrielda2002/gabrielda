@@ -29,6 +29,7 @@ export interface Project {
   title: string;
   description: string;
   repo?: string;
+  repoApi?: string;
   demo?: string;
   image?: string;
 }
