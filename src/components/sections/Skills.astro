@@ -28,11 +28,15 @@ import { skillGroups, totalTechnologies } from "@/data/skills";
             {group.items.map((item) => (
               <div class="sp-row">
                 <span class="arw">▶</span>
+                <span class="sp-item-ico">
+                  <Icon name={item.icon} class="sp-ico" />
+                </span>
                 <span class="nm">{item.name}</span>
                 <span class="qt">{item.tag}</span>
               </div>
             ))}
           </div>
+
           <div class="sp-foot">
             <span>
               {group.items.length} de {totalTechnologies} tecnologías
@@ -115,6 +119,26 @@ import { skillGroups, totalTechnologies } from "@/data/skills";
       opacity 0.12s steps(2),
       transform 0.12s steps(2);
   }
+  .sp-item-ico {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    background: var(--panel);
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0 0 var(--sh);
+    transition: transform 0.1s steps(2);
+  }
+  .sp-row:hover .sp-item-ico {
+    transform: scale(1.08);
+  }
+  .sp-item-ico :global(.sp-ico) {
+    width: 16px;
+    height: 16px;
+    shape-rendering: crispEdges;
+  }
   .sp-row:hover {
     background: var(--sel);
     color: var(--sel-ink);
@@ -127,6 +151,7 @@ import { skillGroups, totalTechnologies } from "@/data/skills";
   .sp-row .nm {
     flex: 1;
   }
+
   .sp-row .qt {
     font: 700 10px/1 var(--font-mono);
     letter-spacing: 0.1em;

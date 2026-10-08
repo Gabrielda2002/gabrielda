@@ -6,10 +6,10 @@ export const skillGroups: SkillGroup[] = [
     title: "Frontend",
     subtitle: "Interfaz y experiencia",
     items: [
-      { name: "TypeScript", tag: "Tipado" },
-      { name: "React", tag: "UI" },
-      { name: "Astro", tag: "Sitios" },
-      { name: "Tailwind CSS", tag: "Estilos" },
+      { name: "TypeScript", tag: "Tipado", icon: "tech-typescript" },
+      { name: "React", tag: "UI", icon: "tech-react" },
+      { name: "Astro", tag: "Sitios", icon: "tech-astro" },
+      { name: "Tailwind CSS", tag: "Estilos", icon: "tech-tailwind" },
     ],
   },
   {
@@ -17,8 +17,8 @@ export const skillGroups: SkillGroup[] = [
     title: "Backend",
     subtitle: "APIs y servicios",
     items: [
-      { name: "Node.js", tag: "Runtime" },
-      { name: "Express", tag: "REST" },
+      { name: "Node.js", tag: "Runtime", icon: "tech-nodejs" },
+      { name: "Express", tag: "REST", icon: "tech-express" },
     ],
   },
   {
@@ -26,8 +26,8 @@ export const skillGroups: SkillGroup[] = [
     title: "Base de datos",
     subtitle: "Persistencia",
     items: [
-      { name: "MySQL", tag: "Relacional" },
-      { name: "PostgreSQL", tag: "Relacional" },
+      { name: "MySQL", tag: "Relacional", icon: "tech-mysql" },
+      { name: "PostgreSQL", tag: "Relacional", icon: "tech-postgresql" },
     ],
   },
 ];
@@ -38,7 +38,13 @@ export const totalTechnologies = skillGroups.reduce(
   0,
 );
 
-// Nombres aplanados (solo el nombre) para las badges de "Tecnologías".
-export const technologyBadges: string[] = skillGroups.flatMap((group) =>
-  group.items.map((item) => item.name),
+export interface TechnologyBadge {
+  name: string;
+  icon: (typeof skillGroups)[number]["items"][number]["icon"];
+}
+
+// Lista aplanada de tecnologías con su icono para las badges de "Sobre mí".
+export const technologyBadges: TechnologyBadge[] = skillGroups.flatMap((group) =>
+  group.items.map((item) => ({ name: item.name, icon: item.icon })),
 );
+

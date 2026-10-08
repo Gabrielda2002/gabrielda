@@ -30,4 +30,12 @@ export type IconName =
   | "i-play"
   | "i-arrow"
   | "i-up"
-  | "i-link";
+  | "i-link"
+  | "tech-typescript"
+  | "tech-react"
+  | "tech-astro"
+  | "tech-tailwind"
+  | "tech-nodejs"
+  | "tech-express"
+  | "tech-mysql"
+  | "tech-postgresql";

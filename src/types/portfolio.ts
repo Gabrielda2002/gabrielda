@@ -8,6 +8,7 @@ export interface NavItem {
 export interface SkillItem {
   name: string;
   tag: string;
+  icon: IconName;
 }
 
 export interface SkillGroup {
