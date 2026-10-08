@@ -13,12 +13,23 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    icon: "i-mobile",
+    title: "Mobile",
+    subtitle: "Apps y ecosistema",
+    items: [
+      { name: "React Native", tag: "Mobile", icon: "tech-react-native" },
+      { name: "Expo", tag: "Toolchain", icon: "tech-expo" },
+      { name: "NativeWind", tag: "Estilos", icon: "tech-nativewind" },
+    ],
+  },
+  {
     icon: "i-server",
     title: "Backend",
     subtitle: "APIs y servicios",
     items: [
       { name: "Node.js", tag: "Runtime", icon: "tech-nodejs" },
       { name: "Express", tag: "REST", icon: "tech-express" },
+      { name: "NestJS", tag: "Framework", icon: "tech-nestjs" },
     ],
   },
   {
@@ -28,9 +39,13 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: "MySQL", tag: "Relacional", icon: "tech-mysql" },
       { name: "PostgreSQL", tag: "Relacional", icon: "tech-postgresql" },
+      { name: "TypeORM", tag: "ORM", icon: "tech-typeorm" },
+      { name: "Prisma ORM", tag: "ORM", icon: "tech-prisma" },
     ],
   },
 ];
+
+
 
 // Total de tecnologías derivado de los grupos (única fuente de verdad).
 export const totalTechnologies = skillGroups.reduce(

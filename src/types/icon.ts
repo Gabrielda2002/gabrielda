@@ -31,11 +31,20 @@ export type IconName =
   | "i-arrow"
   | "i-up"
   | "i-link"
+  | "i-mobile"
   | "tech-typescript"
   | "tech-react"
   | "tech-astro"
   | "tech-tailwind"
   | "tech-nodejs"
   | "tech-express"
+  | "tech-nestjs"
   | "tech-mysql"
-  | "tech-postgresql";
+  | "tech-postgresql"
+  | "tech-prisma"
+  | "tech-typeorm"
+  | "tech-react-native"
+  | "tech-expo"
+  | "tech-nativewind";
+
+
