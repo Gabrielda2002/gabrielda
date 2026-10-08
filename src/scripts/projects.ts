@@ -6,9 +6,35 @@
 // cuando su URL no está vacía; si ambos están vacíos, se oculta toda la fila.
 import { projects } from "@/data/projects";
 
+const TAG_ICON_MAP: Record<string, string> = {
+  typescript: "tech-typescript",
+  ts: "tech-typescript",
+  react: "tech-react",
+  "react native": "tech-react-native",
+  astro: "tech-astro",
+  tailwind: "tech-tailwind",
+  "tailwind css": "tech-tailwind",
+  nativewind: "tech-nativewind",
+  "node.js": "tech-nodejs",
+  node: "tech-nodejs",
+  express: "tech-express",
+  nestjs: "tech-nestjs",
+  "nest.js": "tech-nestjs",
+  mysql: "tech-mysql",
+  postgresql: "tech-postgresql",
+  postgres: "tech-postgresql",
+  typeorm: "tech-typeorm",
+  prisma: "tech-prisma",
+  "prisma orm": "tech-prisma",
+  expo: "tech-expo",
+};
+
 export function initProjects(): void {
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>(".pj"));
   const pane = document.getElementById("pane");
+  const pdImg = document.getElementById("pdImg") as HTMLImageElement | null;
+  const pdEmpty = document.getElementById("pdEmpty");
+  const pdCap = document.getElementById("pdCap");
   const pdTags = document.getElementById("pdTags");
   const pdTitle = document.getElementById("pdTitle");
   const pdDesc = document.getElementById("pdDesc");
@@ -28,11 +54,59 @@ export function initProjects(): void {
       tab.tabIndex = on ? 0 : -1;
     });
 
+    // Efecto de barrido / parpadeo CRT estilo Pokédex
+    if (pane) {
+      pane.classList.remove("pd-swapping");
+      void pane.offsetWidth;
+      pane.classList.add("pd-swapping");
+      pane.setAttribute("aria-labelledby", `tab-${index}`);
+    }
+
+    // Imagen real o radar de búsqueda retro
+    if (project.image && project.image.trim() !== "") {
+      if (pdImg) {
+        pdImg.src = project.image;
+        pdImg.alt = `Captura de ${project.name}`;
+        pdImg.hidden = false;
+      }
+      if (pdEmpty) pdEmpty.hidden = true;
+    } else {
+      if (pdImg) {
+        pdImg.src = "";
+        pdImg.hidden = true;
+      }
+      if (pdEmpty) pdEmpty.hidden = false;
+    }
+
+    // Cabecera / Categoría de la entrada
+    if (pdCap) {
+      pdCap.textContent = `REGISTRO #${String(index + 1).padStart(2, "0")} · ${project.type}`;
+    }
+
+    // Etiquetas con iconos pixel art dinámicos
     if (pdTags) {
       pdTags.replaceChildren(
         ...project.tags.map((t) => {
           const span = document.createElement("span");
-          span.textContent = t;
+          const iconName = TAG_ICON_MAP[t.toLowerCase().trim()];
+          if (iconName) {
+            const svg = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "svg",
+            );
+            svg.setAttribute("class", "tag-ico");
+            svg.setAttribute("viewBox", "0 0 16 16");
+            svg.setAttribute("aria-hidden", "true");
+            const use = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "use",
+            );
+            use.setAttribute("href", `#${iconName}`);
+            svg.appendChild(use);
+            span.appendChild(svg);
+          }
+          const txt = document.createTextNode(t);
+          span.appendChild(txt);
           return span;
         }),
       );
@@ -52,9 +126,9 @@ export function initProjects(): void {
     }
     if (pdLinks) pdLinks.hidden = !hasRepo && !hasDemo;
 
-    if (pane) pane.setAttribute("aria-labelledby", `tab-${index}`);
     if (focus) tabs[index].focus();
   }
+
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {

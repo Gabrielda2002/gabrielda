@@ -6,7 +6,7 @@ import { projects } from "@/data/projects";
 
 <section class="sec" id="proyectos">
   <div class="wrap">
-    <SectionHead tag="03 · Registro" title="Trabajos recientes" number="03" />
+    <SectionHead tag="03 · Registro" title="Proyectos" number="03" />
 
     <div class="proj">
       <div
@@ -44,14 +44,17 @@ import { projects } from "@/data/projects";
         tabindex="0"
       >
         <div class="pd-stage">
-          <div class="stub" aria-hidden="true">
-            <span class="r1"></span>
-            <span class="r2"></span>
-            <span class="r3"></span>
-            <span class="r4"></span>
+          <img class="pd-img" id="pdImg" src="" alt="" hidden />
+          <div class="pd-empty" id="pdEmpty" aria-hidden="true">
+            <div class="radar-box">
+              <span class="radar-cross"></span>
+              <span class="radar-dot"></span>
+            </div>
+            <span class="radar-label">DATOS REGISTRADOS · SIN IMAGEN</span>
           </div>
-          <span class="cap">Vista previa</span>
+          <span class="cap" id="pdCap">Vista previa</span>
         </div>
+
 
         <div class="pd-body">
           <div class="pd-tags" id="pdTags"></div>
@@ -160,30 +163,100 @@ import { projects } from "@/data/projects";
     display: grid;
     place-items: center;
   }
-  .pd-stage .stub {
-    width: 82%;
+  .pd-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pd-img[hidden] {
+    display: none;
+  }
+  .pd-empty {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(14, 26, 44, 0.08) 0 2px,
+      transparent 2px 4px
+    );
+    background-color: var(--panel-2);
   }
-  .pd-stage .stub span {
-    display: block;
-    height: 12px;
-    background: var(--off);
+  .pd-empty[hidden] {
+    display: none;
   }
-  .pd-stage .stub .r1 {
-    width: 46%;
-    height: 20px;
+  .radar-box {
+    width: 64px;
+    height: 64px;
+    border: 2px dashed var(--blue);
+    border-radius: 50%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    animation: radar-spin 10s steps(16) infinite;
+  }
+  .radar-cross {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .radar-cross::before,
+  .radar-cross::after {
+    content: "";
+    position: absolute;
     background: var(--blue);
+    opacity: 0.4;
   }
-  .pd-stage .stub .r2 {
-    width: 88%;
+  .radar-cross::before {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(-50%);
   }
-  .pd-stage .stub .r3 {
-    width: 70%;
+  .radar-cross::after {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: translateY(-50%);
   }
-  .pd-stage .stub .r4 {
-    width: 78%;
+  .radar-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--coral);
+    border: 2px solid var(--line);
+    animation: radar-pulse 1.4s steps(2) infinite;
+  }
+  @keyframes radar-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes radar-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(0.6);
+      opacity: 0.4;
+    }
+  }
+  .radar-label {
+    font: 700 9px/1 var(--font-mono);
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
   }
   .pd-stage .cap {
     position: absolute;
@@ -195,6 +268,7 @@ import { projects } from "@/data/projects";
     font: 700 9px/1 var(--font-mono);
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    box-shadow: 2px 2px 0 0 var(--sh);
   }
   .pd-body {
     padding-top: 20px;
@@ -206,6 +280,9 @@ import { projects } from "@/data/projects";
     margin-bottom: 16px;
   }
   .pd-tags :global(span) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 4px 10px;
     border: 3px solid var(--line);
     border-radius: 4px;
@@ -213,8 +290,30 @@ import { projects } from "@/data/projects";
     letter-spacing: 0.1em;
     text-transform: uppercase;
     background: var(--panel-2);
+    box-shadow: 2px 2px 0 0 var(--sh);
+  }
+  .pd-tags :global(.tag-ico) {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    shape-rendering: crispEdges;
+  }
+  .proj-pane.pd-swapping .pd-stage,
+  .proj-pane.pd-swapping .pd-body {
+    animation: pokedex-swap 0.14s steps(2);
+  }
+  @keyframes pokedex-swap {
+    0% {
+      opacity: 0.3;
+      filter: contrast(1.5) brightness(1.2);
+    }
+    100% {
+      opacity: 1;
+      filter: none;
+    }
   }
   .pd-title {
+
     font: 900 24px/1.1 var(--font-pix);
     text-transform: uppercase;
     margin-bottom: 12px;

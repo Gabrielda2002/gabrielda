@@ -3,6 +3,18 @@ import type { Project } from "@/types/portfolio";
 // TODO: completar `repo`, `demo` e `image` con los datos reales de cada proyecto.
 export const projects: Project[] = [
   {
+    id: "mobile-app",
+    name: "Mobile App",
+    type: "App móvil",
+    tags: ["React Native", "Expo", "NativeWind", "NestJS", "TypeORM"],
+    title: "App Móvil Multiplataforma",
+    description:
+      "Aplicación móvil desarrollada con React Native, Expo y NativeWind. Arquitectura backend modular con NestJS, autenticación segura y persistencia de datos con TypeORM.",
+    repo: "",
+    demo: "",
+    image: "",
+  },
+  {
     id: "taskflow",
     name: "TaskFlow",
     type: "Web app",
@@ -14,6 +26,7 @@ export const projects: Project[] = [
     demo: "",
     image: "",
   },
+
   {
     id: "devblog",
     name: "DevBlog",

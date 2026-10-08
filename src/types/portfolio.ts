@@ -18,7 +18,8 @@ export interface SkillGroup {
   items: SkillItem[];
 }
 
-export type ProjectType = "Web app" | "Sitio" | "Panel";
+export type ProjectType = "Web app" | "App móvil" | "Full Stack" | "Sitio" | "Panel";
+
 
 export interface Project {
   id: string;
