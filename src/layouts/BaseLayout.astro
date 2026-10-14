@@ -1,9 +1,4 @@
 ---
-// Solo el subset `latin`: el contenido es español y todo su repertorio
-// (incluidos á/é/í/ó/ú/ñ/ü/¿/¡) vive en Latin-1 (U+0000–00FF). Los archivos
-// por subset de fontsource no declaran `unicode-range`, así que importar
-// también `latin-ext` crearía dos @font-face con descriptores idénticos y el
-// navegador usaría solo el último (sin los caracteres base).
 import "@fontsource/press-start-2p/latin.css";
 import "@fontsource/dotgothic16/latin.css";
 import "../styles/global.css";
@@ -29,6 +24,8 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e7f0f8" media="(prefers-color-scheme: light)"/>
+    <meta name="theme-color" content="#0a1130" media="(prefers-color-scheme: dark)"/>
     <SEO
       title={title}
       description={description}
@@ -37,11 +34,9 @@ const {
     />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <script is:inline>
-      // Tema día/noche aplicado ANTES del primer pintado (evita el FOUC).
-      // Semántica fiel al original: el valor guardado gana; si no existe,
-      // prefiere el esquema oscuro del sistema; en caso contrario, día.
       (function () {
         var root = document.documentElement;
         var KEY = "gd-theme";

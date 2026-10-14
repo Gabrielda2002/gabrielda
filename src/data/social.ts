@@ -4,20 +4,20 @@ import type { SocialLink } from "@/types/portfolio";
 export const socialLinks: SocialLink[] = [
   {
     label: "Email",
-    value: "gabriel@ejemplo.com",
-    href: "mailto:gabriel@ejemplo.com",
+    value: "duartearias2002@gmail.com",
+    href: "mailto:duartearias2002@gmail.com",
     icon: "i-mail",
   },
   {
     label: "GitHub",
-    value: "github.com/gabriel-dev",
-    href: "https://github.com/gabriel-dev",
+    value: "github.com/Gabrielda2002",
+    href: "https://github.com/Gabrielda2002",
     icon: "i-repo",
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/gabrielduarte",
-    href: "https://linkedin.com/in/gabrielduarte",
+    value: "in/gabriel-duarte-arias-762931171/",
+    href: "https://www.linkedin.com/in/gabriel-camilo-duarte-arias-9585b3272/",
     icon: "i-id",
   },
 ];

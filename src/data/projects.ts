@@ -64,6 +64,5 @@ export const projects: Project[] = [
       "API REST de analítica financiera y auditoría de salud para la alta gerencia de Nordvital IPS. Desarrollada con NestJS 11 y Prisma 7 sobre un motor de base de datos con más de 381k registros médicos consolidados (SAP/PLENUS/PANA); provee métricas para 5 dashboards gerenciales: Pareto 80/20 de procedimientos (CUPS), desvíos de Nota Técnica, oportunidad médica y programas PyM/RIAS con caché en memoria y suite de pruebas en Jest.",
     repo: "https://github.com/Gabrielda2002/backend-auto",
     demo: "",
-    image: "/projects/dashboard-nt.webp",
   },
 ];

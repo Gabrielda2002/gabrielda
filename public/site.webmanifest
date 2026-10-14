@@ -1,0 +1,17 @@
+{
+  "name": "Gabriel Duarte — Desarrollador Full Stack",
+  "short_name": "Gabriel Duarte",
+  "description": "Portafolio de Gabriel Duarte, desarrollador web full stack, con estética de consola retro de doble pantalla.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1130",
+  "theme_color": "#0a1130",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -2,6 +2,30 @@
 import SectionHead from "@/components/ui/SectionHead.astro";
 import Icon from "@/components/ui/Icon.astro";
 import { projects } from "@/data/projects";
+import type { IconName } from "@/types/icon";
+
+const TAG_ICON_MAP: Record<string, IconName> = {
+  typescript: "tech-typescript",
+  ts: "tech-typescript",
+  react: "tech-react",
+  "react native": "tech-react-native",
+  astro: "tech-astro",
+  tailwind: "tech-tailwind",
+  "tailwind css": "tech-tailwind",
+  nativewind: "tech-nativewind",
+  "node.js": "tech-nodejs",
+  node: "tech-nodejs",
+  express: "tech-express",
+  nestjs: "tech-nestjs",
+  "nest.js": "tech-nestjs",
+  mysql: "tech-mysql",
+  postgresql: "tech-postgresql",
+  postgres: "tech-postgresql",
+  typeorm: "tech-typeorm",
+  prisma: "tech-prisma",
+  "prisma orm": "tech-prisma",
+  expo: "tech-expo",
+};
 ---
 
 <section class="sec" id="proyectos">
@@ -21,7 +45,7 @@ import { projects } from "@/data/projects";
             type="button"
             role="tab"
             id={`tab-${i}`}
-            aria-controls="pane"
+            aria-controls={`pane-${i}`}
             aria-selected={i === 0 ? "true" : "false"}
             data-i={i}
             tabindex={i === 0 ? "0" : "-1"}
@@ -36,45 +60,104 @@ import { projects } from "@/data/projects";
         ))}
       </div>
 
-      <div
-        class="proj-pane panel reveal"
-        id="pane"
-        role="tabpanel"
-        aria-labelledby="tab-0"
-        tabindex="0"
-      >
-        <div class="pd-stage">
-          <img class="pd-img" id="pdImg" src="" alt="" hidden />
-          <div class="pd-empty" id="pdEmpty" aria-hidden="true">
-            <div class="radar-box">
-              <span class="radar-cross"></span>
-              <span class="radar-dot"></span>
+      <div class="proj-panels reveal">
+        {projects.map((project, i) => {
+          const hasRepo = Boolean(project.repo && project.repo.trim() !== "");
+          const hasRepoApi = Boolean(project.repoApi && project.repoApi.trim() !== "");
+          const hasDemo = Boolean(project.demo && project.demo.trim() !== "");
+          const hasLinks = hasRepo || hasRepoApi || hasDemo;
+          const hasImage = Boolean(project.image && project.image.trim() !== "");
+
+          return (
+            <div
+              class="proj-pane panel"
+              id={`pane-${i}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${i}`}
+              tabindex="0"
+              data-pane={i}
+              hidden={i !== 0}
+            >
+              <div class="pd-stage">
+                {hasImage ? (
+                  <img
+                    class="pd-img"
+                    src={project.image}
+                    alt={`Captura de ${project.name}`}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="pd-empty" aria-hidden="true">
+                    <div class="radar-box">
+                      <span class="radar-cross" />
+                      <span class="radar-dot" />
+                    </div>
+                    <span class="radar-label">DATOS REGISTRADOS · SIN IMAGEN</span>
+                  </div>
+                )}
+                
+                <span class="cap">
+                  {`REGISTRO #${String(i + 1).padStart(2, "0")} · ${project.type}`}
+                </span>
+              </div>
+
+              <div class="pd-body">
+                <div class="pd-tags">
+                  {project.tags.map((tag) => {
+                    const iconName = TAG_ICON_MAP[tag.toLowerCase().trim()];
+                    return (
+                      <span>
+                        {iconName && <Icon name={iconName} class="tag-ico" />}
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <h3 class="pd-title">{project.title}</h3>
+                <p class="pd-desc">{project.description}</p>
+
+                {hasLinks && (
+                  <div class="pd-links">
+                    {hasRepo && (
+                      <a
+                        class="chip-link"
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon name="i-repo" />
+                        <span>{hasRepoApi ? "Frontend" : "Código"}</span>
+                      </a>
+                    )}
+                    {hasRepoApi && (
+                      <a
+                        class="chip-link"
+                        href={project.repoApi}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon name="i-repo" />
+                        <span>API</span>
+                      </a>
+                    )}
+                    {hasDemo && (
+                      <a
+                        class="chip-link"
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon name="i-link" />
+                        <span>Demo</span>
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-            <span class="radar-label">DATOS REGISTRADOS · SIN IMAGEN</span>
-          </div>
-          <span class="cap" id="pdCap">Vista previa</span>
-        </div>
-
-
-        <div class="pd-body">
-          <div class="pd-tags" id="pdTags"></div>
-          <h3 class="pd-title" id="pdTitle"></h3>
-          <p class="pd-desc" id="pdDesc"></p>
-          <div class="pd-links" id="pdLinks">
-            <a class="chip-link" id="pdRepo" href="#" hidden target="_blank" rel="noopener noreferrer">
-              <Icon name="i-repo" />
-              <span id="pdRepoText">Código</span>
-            </a>
-            <a class="chip-link" id="pdRepoApi" href="#" hidden target="_blank" rel="noopener noreferrer">
-              <Icon name="i-repo" />
-              API
-            </a>
-            <a class="chip-link" id="pdDemo" href="#" hidden target="_blank" rel="noopener noreferrer">
-              <Icon name="i-link" />
-              Demo
-            </a>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   </div>
@@ -82,7 +165,9 @@ import { projects } from "@/data/projects";
 
 <script>
   import { initProjects } from "@/scripts/projects";
+
   initProjects();
+  document.addEventListener("astro:page-load", initProjects);
 </script>
 
 <style>
