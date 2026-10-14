@@ -2,19 +2,13 @@
 @import "./tokens.css";
 @import "./pixel.css";
 
-/* -------------------------------------------------------------------------
-   Mapeo de tokens al tema de Tailwind v4.
-   `inline` enlaza directamente con las variables del sistema de diseño,
-   de modo que utilidades como `bg-panel`, `text-ink` o `font-pix` resuelvan
-   a los valores vivos (día / noche) sin doble indirección.
-   ------------------------------------------------------------------------- */
 @theme inline {
   /* colores */
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-panel: var(--panel);
-  --color-panel-2: var(--panel-2);
+--color-panel-2: var(--panel-2);
   --color-screen: var(--bg);
   --color-sel: var(--sel);
   --color-sel-ink: var(--sel-ink);
