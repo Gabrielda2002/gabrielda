@@ -2,12 +2,13 @@
 import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
+import sitemap from "@astrojs/sitemap";
 import { fileURLToPath } from "node:url";
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: reemplazar por el dominio real cuando exista.
-  site: "https://example.com",
+  site: process.env.SITE_URL || "https://example.com",
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
     resolve: {

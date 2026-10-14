@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+# Sitemap generado automáticamente por @astrojs/sitemap
+Sitemap: https://example.com/sitemap-index.xml

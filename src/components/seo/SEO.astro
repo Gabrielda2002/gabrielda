@@ -1,0 +1,105 @@
+---
+import { site } from "@/data/site";
+import { socialLinks } from "@/data/social";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  type?: string;
+}
+
+const {
+  title = "Gabriel Duarte — Desarrollador Web Full Stack",
+  description = "Portafolio de Gabriel Duarte, desarrollador web full stack, con estética de consola retro de doble pantalla.",
+  image = "/og-image.png",
+  noindex = false,
+  type = "website",
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site : new URL("https://example.com");
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const resolvedImage = new URL(image, siteUrl).toString();
+
+const robotsContent = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
+
+const sameAsLinks = socialLinks
+  .filter((link) => link.href.startsWith("http"))
+  .map((link) => link.href);
+
+const bioPlain = site.bio[0]?.replace(/<[^>]*>?/gm, "") || description;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${canonicalURL.origin}/#website`,
+      url: canonicalURL.origin,
+      name: `${site.name} — Portfolio`,
+      description: description,
+      inLanguage: "es",
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${canonicalURL.href}#profilepage`,
+      url: canonicalURL.href,
+      name: title,
+      isPartOf: {
+        "@id": `${canonicalURL.origin}/#website`,
+      },
+      mainEntity: {
+        "@type": "Person",
+        "@id": `${canonicalURL.origin}/#person`,
+        name: site.name,
+        jobTitle: site.role,
+        description: bioPlain,
+        url: canonicalURL.origin,
+        sameAs: sameAsLinks,
+        knowsAbout: [
+          "TypeScript",
+          "React",
+          "React Native",
+          "Node.js",
+          "NestJS",
+          "Astro",
+          "Tailwind CSS",
+          "PostgreSQL",
+          "MySQL",
+          "Prisma ORM",
+        ],
+      },
+    },
+  ],
+};
+---
+
+<!-- Metadatos Principales -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="robots" content={robotsContent} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content="es_CO" />
+<meta property="og:image" content={resolvedImage} />
+<meta property="og:image:alt" content={title} />
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={resolvedImage} />
+
+<!-- Datos Estructurados JSON-LD (Schema.org) -->
+{!noindex && (
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+)}

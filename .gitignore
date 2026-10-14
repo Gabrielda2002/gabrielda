@@ -25,3 +25,5 @@ pnpm-debug.log*
 .atl
 .playwright-mcp
 .vscode
+.claude/
+.agents/
