@@ -1,12 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
-  <rect width="16" height="16" fill="#0E1A2C" />
-  <g fill="#FFD34E">
-    <rect x="6" y="0" width="4" height="2" />
-    <rect x="4" y="2" width="8" height="2" />
-    <rect x="2" y="4" width="12" height="2" />
-    <rect x="0" y="6" width="16" height="4" />
-    <rect x="2" y="10" width="12" height="2" />
-    <rect x="4" y="12" width="8" height="2" />
-    <rect x="6" y="14" width="4" height="2" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- Stand base & neck -->
+  <rect x="6" y="12" width="4" height="2" fill="#141c4a" />
+  <rect x="4" y="14" width="8" height="2" fill="#2f8fe0" />
+
+  <!-- Monitor outer bezel -->
+  <rect x="1" y="2" width="14" height="9" fill="#1c2560" />
+  <rect x="2" y="1" width="12" height="11" fill="#1c2560" />
+
+  <!-- Bezel neon border -->
+  <rect x="2" y="1" width="12" height="1" fill="#2f8fe0" />
+  <rect x="2" y="11" width="12" height="1" fill="#2f8fe0" />
+  <rect x="1" y="2" width="1" height="9" fill="#2f8fe0" />
+  <rect x="14" y="2" width="1" height="9" fill="#2f8fe0" />
+
+  <!-- CRT screen inside -->
+  <rect x="3" y="3" width="10" height="7" fill="#040a24" />
+
+  <!-- Screen phosphor scanline / highlight -->
+  <rect x="3" y="3" width="10" height="1" fill="#0e1a2c" />
+
+  <!-- Terminal prompt > in Lime Green -->
+  <rect x="4" y="5" width="1" height="1" fill="#7ed44a" />
+  <rect x="5" y="6" width="1" height="1" fill="#7ed44a" />
+  <rect x="4" y="7" width="1" height="1" fill="#7ed44a" />
+
+  <!-- Terminal blinking cursor in Sun Gold -->
+  <rect x="7" y="6" width="2" height="1" fill="#ffd34e" />
+
+  <!-- Monitor power LED dot (bottom right corner of bezel) -->
+  <rect x="12" y="10" width="1" height="1" fill="#7ed44a" />
 </svg>
