@@ -15,11 +15,13 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/vercel": "^11.0.16",
     "@fontsource/dotgothic16": "^5.3.0",
     "@fontsource/press-start-2p": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.3",
     "cookie": "^2.0.1",
+    "resend": "^6.35.0",
     "tailwindcss": "^4.3.3"
   },
   "allowScripts": {

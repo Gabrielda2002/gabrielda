@@ -2,9 +2,6 @@
 import Button from "@/components/ui/Button.astro";
 import Icon from "@/components/ui/Icon.astro";
 
-// TODO: la lógica de validación y envío vivirá en
-// `src/scripts/contact-form.ts` cuando el formulario se conecte. Por ahora
-// este componente es SOLO visual: sin script, sin validación ni envío.
 ---
 
 <form class="form panel reveal" id="form" novalidate data-contact-form>
@@ -136,4 +133,21 @@ import Icon from "@/components/ui/Icon.astro";
     color: #10240c;
     border-color: var(--line);
   }
+  .status.err {
+    background: var(--coral);
+    color: #fff;
+    border-color: var(--line);
+  }
+  .form :global(.btn:disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: 4px 4px 0 0 var(--line);
+    transform: none !important;
+  }
 </style>
+
+<script>
+  import { initContactForm } from "@/scripts/contact";
+  initContactForm();
+</script>
+
