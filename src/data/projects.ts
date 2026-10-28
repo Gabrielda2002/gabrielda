@@ -2,6 +2,19 @@ import type { Project } from "@/types/portfolio";
 
 export const projects: Project[] = [
   {
+    id: "nordvital-app",
+    name: "Nordvital App",
+    type: "Full Stack",
+    tags: ["React", "Node.js", "TypeORM", "TypeScript", "MySQL"],
+    title: "Sistema de Radicación & Gestión Hospitalaria",
+    description:
+      "Plataforma integral Full Stack de gestión hospitalaria y radicación médica para Nordvital IPS. Frontend SPA reactivo desarrollado con React 19, Tailwind CSS, TanStack Query y Recharts; conectado a un backend modular con Node.js, Express, TypeORM y MySQL, autenticación JWT con roles y permisos, WebSockets en tiempo real y generación masiva de reportes en Excel/PDF.",
+    repo: "https://github.com/Gabrielda2002/radicar-app-frond",
+    repoApi: "https://github.com/Gabrielda2002/Api-nordvital",
+    demo: "https://app.nordvitalips.com",
+    image: "/projects/app.nordvitalips.webp",
+  },
+  {
     id: "nordvital-ips",
     name: "Nordvital IPS",
     type: "Web app",
@@ -38,21 +51,6 @@ export const projects: Project[] = [
     repo: "https://github.com/Gabrielda2002/SaveBridge",
     demo: "",
     image: "/projects/saveBridge.webp",
-  },
-
-
-  {
-    id: "nordvital-app",
-    name: "Nordvital App",
-    type: "Full Stack",
-    tags: ["React", "Node.js", "TypeORM", "TypeScript", "MySQL"],
-    title: "Sistema de Radicación & Gestión Hospitalaria",
-    description:
-      "Plataforma integral Full Stack de gestión hospitalaria y radicación médica para Nordvital IPS. Frontend SPA reactivo desarrollado con React 19, Tailwind CSS, TanStack Query y Recharts; conectado a un backend modular con Node.js, Express, TypeORM y MySQL, autenticación JWT con roles y permisos, WebSockets en tiempo real y generación masiva de reportes en Excel/PDF.",
-    repo: "https://github.com/Gabrielda2002/radicar-app-frond",
-    repoApi: "https://github.com/Gabrielda2002/Api-nordvital",
-    demo: "https://app.nordvitalips.com",
-    image: "/projects/app.nordvitalips.webp",
   },
   {
     id: "dashboard-nt",

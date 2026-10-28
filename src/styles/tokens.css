@@ -1,8 +1,3 @@
-/* -------------------------------------------------------------------------
-   Design tokens — sistema de consola / pixel-art.
-   Valores copiados VERBATIM del diseño original (no modificar).
-   ------------------------------------------------------------------------- */
-
 :root {
   /* ---- acentos vivos ---- */
   --blue: #2f8fe0;
@@ -52,6 +47,7 @@
   --r: 8px; /* radio de caja de menú (las cajas de consola son redondeadas) */
 }
 
+/* modo noche */
 [data-theme="night"] {
   --w-sky-1: #24356f;
   --w-sky-2: #18265c;
@@ -61,6 +57,7 @@
   --w-grass-1: #123644;
   --w-grass-2: #0c2733;
   --w-town: #6e8fd0;
+  --amber: #244766;
 
   --bg: #0a1130;
   --bg-2: #070c22;

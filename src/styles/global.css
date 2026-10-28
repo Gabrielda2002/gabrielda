@@ -31,9 +31,6 @@
 /* Variante `night:` que aplica tanto al `<html>` como a sus descendientes. */
 @custom-variant night (&:where([data-theme="night"], [data-theme="night"] *));
 
-/* -------------------------------------------------------------------------
-   Base
-   ------------------------------------------------------------------------- */
 @layer base {
   html {
     scroll-behavior: smooth;

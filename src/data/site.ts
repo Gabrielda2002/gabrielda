@@ -16,7 +16,7 @@ export const site: SiteInfo = {
   quote:
     "“El diseño no es solo cómo se ve, sino cómo funciona. Cada línea de código debe tener un propósito.”",
   quoteCitation: "— Principio de trabajo",
-  footerText: "© 2026 Gabriel Duarte — Desarrollador web",
+  footerText: "© 2026 Gabriel Duarte — Desarrollador Full Stack",
   // TODO: reemplazar por la ruta real de la foto cuando exista.
   photo: "",
   heroCard: {
@@ -25,6 +25,5 @@ export const site: SiteInfo = {
     stack: "TypeScript · React · Node.js",
   },
   contactIntro:
-
     "Si tienes un proyecto en mente, una oportunidad laboral o simplemente quieres conectar, estaré encantado de escucharte.",
 };
