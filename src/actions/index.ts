@@ -1,6 +1,7 @@
 import { defineAction, ActionError } from "astro:actions";
 import { z } from "astro/zod";
 import { Resend } from "resend";
+import { renderPokemonContactEmail } from "@/emails/pokemon-template";
 
 export const server = {
   sendContact: defineAction({
@@ -12,8 +13,16 @@ export const server = {
     }),
     
     handler: async ({ name, email, message }) => {
-      const apiKey = import.meta.env.PUBLIC_API_KEY_RESEND;
-      const receiver = import.meta.env.PUBLIC_CONTACT_RECEIVER_EMAIL;
+      const apiKey =
+        import.meta.env.PUBLIC_API_KEY_RESEND ||
+        import.meta.env.API_KEY_RESEND ||
+        process.env.API_KEY_RESEND ||
+        process.env.RESEND_API_KEY;
+      const receiver =
+        import.meta.env.PUBLIC_CONTACT_RECEIVER_EMAIL ||
+        import.meta.env.CONTACT_RECEIVER_EMAIL ||
+        process.env.CONTACT_RECEIVER_EMAIL ||
+        "natgabi0726@gmail.com";
 
       if (!apiKey) {
         throw new ActionError({
@@ -23,21 +32,15 @@ export const server = {
       }
 
       const resend = new Resend(apiKey);
+      const { html, text } = renderPokemonContactEmail({ name, email, message });
 
       const { data, error } = await resend.emails.send({
         from: "Portfolio Contact <onboarding@resend.dev>",
         to: [receiver],
         replyTo: email,
         subject: `Nuevo mensaje de ${name} [Portafolio]`,
-        html: `
-          <h2>Nuevo mensaje de contacto desde el Portafolio</h2>
-          <p><strong>Nombre:</strong> ${name}</p>
-          <p><strong>Email remitente:</strong> ${email}</p>
-          <p><strong>Mensaje:</strong></p>
-          <blockquote style="background: #f4f4f5; padding: 12px; border-left: 4px solid #10240c; font-family: sans-serif; white-space: pre-wrap;">
-            ${message}
-          </blockquote>
-        `,
+        html,
+        text
       });
 
       if (error) {
