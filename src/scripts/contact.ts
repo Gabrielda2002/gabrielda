@@ -1,4 +1,5 @@
 import { actions } from "astro:actions";
+import { showSuccessDialog } from "@/scripts/contact-dialog";
 
 export function initContactForm(): void {
   const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
@@ -20,6 +21,8 @@ export function initContactForm(): void {
   const submitBtn = form.querySelector<HTMLButtonElement>("button[type='submit']");
   const originalBtnHtml = submitBtn?.innerHTML || "Enviar mensaje";
 
+  // ── Helpers ──────────────────────────────────────────────────────────────
+
   function clearErrors(): void {
     nameField?.classList.remove("bad");
     emailField?.classList.remove("bad");
@@ -29,7 +32,7 @@ export function initContactForm(): void {
     if (msgErr) msgErr.textContent = "";
   }
 
-  function setStatus(msg: string, type: "ok" | "err"): void {
+  function setStatus(msg: string, type: "err"): void {
     if (!statusEl) return;
     statusEl.hidden = false;
     statusEl.className = `status show ${type}`;
@@ -43,7 +46,8 @@ export function initContactForm(): void {
     statusEl.textContent = "";
   }
 
-  // Real-time error dismissal when user interacts
+  // ── Real-time error dismissal ────────────────────────────────────────────
+
   nameInput?.addEventListener("input", () => {
     nameField?.classList.remove("bad");
     if (nameErr) nameErr.textContent = "";
@@ -56,6 +60,8 @@ export function initContactForm(): void {
     msgField?.classList.remove("bad");
     if (msgErr) msgErr.textContent = "";
   });
+
+  // ── Form submit ──────────────────────────────────────────────────────────
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -104,8 +110,7 @@ export function initContactForm(): void {
       }
 
       if (data?.success) {
-        setStatus("¡Mensaje enviado con éxito! Te responderé a la brevedad.", "ok");
-        form.reset();
+        showSuccessDialog(form, name);
       }
     } catch {
       setStatus("Ocurrió un error inesperado al conectar con el servidor.", "err");
@@ -118,4 +123,3 @@ export function initContactForm(): void {
     }
   });
 }
-

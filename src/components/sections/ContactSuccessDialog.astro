@@ -1,0 +1,153 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+---
+
+<div
+  id="contact-dialog"
+  class="cd-overlay"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mensaje enviado con éxito"
+  data-contact-dialog
+>
+  <div class="cd-backdrop dith" aria-hidden="true"></div>
+
+
+  <div class="cd-box panel" aria-live="polite">
+    <span class="cd-speaker">GABRIEL</span>
+    <p class="cd-text">
+      <span id="cd-typed"></span><span class="cd-caret" aria-hidden="true">▼</span>
+    </p>
+  </div>
+
+  <button type="button" class="cd-advance" aria-label="Continuar al siguiente mensaje"></button>
+</div>
+
+<style>
+  .cd-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: calc(var(--r) - 4px);
+    overflow: hidden;
+  }
+  .cd-overlay[hidden] {
+    display: none;
+  }
+
+  .cd-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 17, 48, 0.78);
+    z-index: 0;
+  }
+
+  .cd-item {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    margin: auto auto 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 36px;
+    animation: cd-item-pop 0.18s steps(3) both;
+  }
+  .cd-item :global(.cd-item-icon) {
+    width: 32px;
+    height: 32px;
+    fill: var(--blue);
+    shape-rendering: crispEdges;
+  }
+  .cd-item-label {
+    font: 700 9px/1 var(--font-mono);
+    letter-spacing: 0.2em;
+    color: var(--sun);
+    text-transform: uppercase;
+  }
+
+  .cd-box {
+    position: relative;
+    z-index: 1;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+    padding: 14px 18px 20px;
+    min-height: 88px;
+    flex-shrink: 0;
+  }
+
+  .cd-speaker {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 3px 10px;
+    background: var(--blue);
+    color: #06152b;
+    border: 4px solid var(--line);
+    font: 700 9px/1 var(--font-mono);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .cd-text {
+    font: 400 15px/1.6 var(--font-body);
+    color: var(--ink);
+    min-height: 1.6em;
+  }
+
+  .cd-caret {
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--blue);
+    font-size: 10px;
+    vertical-align: middle;
+    opacity: 0;
+    transition: opacity 0.08s steps(1);
+  }
+  .cd-caret.cd-caret--on {
+    opacity: 1;
+    animation: cd-caret-blink 0.72s steps(1) infinite;
+  }
+
+  .cd-advance {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+  }
+  .cd-advance:focus-visible {
+    opacity: 0.12;
+    background: var(--sel);
+    outline: none;
+  }
+
+  @keyframes cd-item-pop {
+    0%   { transform: scale(0.5) translateY(12px); opacity: 0; }
+    66%  { transform: scale(1.08) translateY(-2px); opacity: 1; }
+    100% { transform: scale(1) translateY(0);       opacity: 1; }
+  }
+  @keyframes cd-caret-blink {
+    50% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cd-item {
+      animation: none;
+    }
+    .cd-caret.cd-caret--on {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
+
