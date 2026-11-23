@@ -6,25 +6,48 @@ export const projects: Project[] = [
     name: "Nordvital App",
     type: "Full Stack",
     tags: ["React", "Node.js", "TypeORM", "TypeScript", "MySQL"],
-    title: "Sistema de Radicación & Gestión Hospitalaria",
-    description:
-      "Plataforma integral Full Stack de gestión hospitalaria y radicación médica para Nordvital IPS. Frontend SPA reactivo desarrollado con React 19, Tailwind CSS, TanStack Query y Recharts; conectado a un backend modular con Node.js, Express, TypeORM y MySQL, autenticación JWT con roles y permisos, WebSockets en tiempo real y generación masiva de reportes en Excel/PDF.",
+    title: "Radicación médica y gestión hospitalaria en una misma plataforma.",
+    caseStudy: {
+      problem:
+        "Gestionar la radicación médica, los permisos de acceso y los reportes de Nordvital IPS.",
+      contribution:
+        "Desarrollo full stack: interfaz en React, API modular, autenticación por roles y comunicación en tiempo real.",
+      outcome:
+        "Una plataforma con gestión hospitalaria, actualizaciones por WebSockets y generación de reportes en Excel y PDF.",
+    },
     repo: "https://github.com/Gabrielda2002/radicar-app-frond",
     repoApi: "https://github.com/Gabrielda2002/Api-nordvital",
     demo: "https://app.nordvitalips.com",
-    image: "/projects/app.nordvitalips.webp",
+    image: {
+      src: "/projects/app.nordvitalips.webp",
+      alt: "Panel de Nordvital App con bienvenida, centro de novedades y calendario de actividades.",
+      width: 1920,
+      height: 911,
+    },
   },
   {
     id: "nordvital-ips",
     name: "Nordvital IPS",
     type: "Web app",
     tags: ["Astro", "React", "Tailwind CSS", "TypeScript"],
-    title: "Portal Institucional & Red de Sedes",
-    description:
-      "Rediseño y desarrollo de la plataforma web institucional para Nordvital IPS (red con 11 sedes en Colombia). Arquitectura de islas con Astro y React, catálogo de servicios y medicina laboral, mapas interactivos georreferenciados, carruseles dinámicos y sistema de radicación PQRSFD.",
+    title:
+      "Servicios de salud y una red de 11 sedes al alcance de sus pacientes.",
+    caseStudy: {
+      problem:
+        "Presentar los servicios de Nordvital IPS y facilitar la consulta de sus 11 sedes en Colombia.",
+      contribution:
+        "Rediseño y desarrollo del portal con Astro y React, mapas interactivos y sistema de radicación PQRSFD.",
+      outcome:
+        "Un portal que reúne el catálogo de servicios, medicina laboral, ubicación de sedes y canales de atención.",
+    },
     repo: "https://github.com/Gabrielda2002/Page-Nordvital",
     demo: "https://nordvitalips.com",
-    image: "/projects/nordvitalips.webp",
+    image: {
+      src: "/projects/nordvitalips.webp",
+      alt: "Página de inicio del portal institucional de Nordvital IPS.",
+      width: 1920,
+      height: 911,
+    },
   },
 
   {
@@ -32,12 +55,24 @@ export const projects: Project[] = [
     name: "Nordvital CI",
     type: "Sitio",
     tags: ["Astro", "React", "Tailwind CSS", "TypeScript"],
-    title: "Centro de Investigación Clínica",
-    description:
-      "Plataforma web institucional y de captación de voluntarios para el Centro de Investigación Clínica de Nordvital IPS. Desarrollada con arquitectura de islas (Astro 5 y React 19), catálogo de ensayos clínicos, comités de ética, sistema de postulación con validaciones estrictas (React Hook Form, Zod) y suite de pruebas unitarias con Jest.",
+    title:
+      "Investigación clínica y postulación de voluntarios en un solo lugar.",
+    caseStudy: {
+      problem:
+        "Dar a conocer los ensayos clínicos del centro y recibir postulaciones de voluntarios.",
+      contribution:
+        "Desarrollo con Astro y React, formularios validados con React Hook Form y Zod, y pruebas unitarias con Jest.",
+      outcome:
+        "Una plataforma con catálogo de ensayos, información de los comités de ética y un flujo de postulación validado.",
+    },
     repo: "https://github.com/Gabrielda2002/remake-landing-page-CI",
     demo: "https://investigation.nordvitalips.com",
-    image: "/projects/nordvital-ci.webp",
+    image: {
+      src: "/projects/nordvital-ci.webp",
+      alt: "Página de inicio del Centro de Investigación Clínica de Nordvital IPS.",
+      width: 1920,
+      height: 911,
+    },
   },
 
   {
@@ -45,21 +80,38 @@ export const projects: Project[] = [
     name: "SaveBridge",
     type: "App móvil",
     tags: ["React Native", "Expo", "Node.js", "TypeScript"],
-    title: "Sincronizador Multiplataforma de Partidas",
-    description:
-      "Ecosistema para sincronizar bidireccionalmente partidas guardadas de emuladores y videojuegos entre Windows y Android en red local. Monorepo con app móvil en React Native y Expo (escaneo de almacenamiento Scoped Storage, emparejamiento por QR con cámara y cálculo hash SHA-256) y agente de escritorio en Node.js con servidor REST, detección de conflictos y respaldos automáticos.",
+    title: "Tus partidas guardadas, sincronizadas entre Windows y Android.",
+    caseStudy: {
+      problem:
+        "Mantener sincronizadas las partidas de emuladores y videojuegos entre el teléfono y el PC en una red local.",
+      contribution:
+        "App en React Native y Expo más un agente de escritorio en Node.js: emparejamiento QR, acceso a archivos y comparación SHA-256.",
+      outcome:
+        "Sincronización bidireccional con detección de conflictos y respaldos automáticos de las partidas.",
+    },
     repo: "https://github.com/Gabrielda2002/SaveBridge",
     demo: "",
-    image: "/projects/saveBridge.webp",
+    image: {
+      src: "/projects/saveBridge.webp",
+      alt: "Pantalla completa de la aplicación móvil SaveBridge para sincronizar partidas guardadas.",
+      width: 574,
+      height: 1277,
+    },
   },
   {
     id: "dashboard-nt",
     name: "Dashboard NT",
     type: "Panel",
     tags: ["NestJS", "Prisma", "Node.js", "TypeScript", "MySQL"],
-    title: "API Analítica de Costos Médicos vs. Nota Técnica",
-    description:
-      "API REST de analítica financiera y auditoría de salud para la alta gerencia de Nordvital IPS. Desarrollada con NestJS 11 y Prisma 7 sobre un motor de base de datos con más de 381k registros médicos consolidados (SAP/PLENUS/PANA); provee métricas para 5 dashboards gerenciales: Pareto 80/20 de procedimientos (CUPS), desvíos de Nota Técnica, oportunidad médica y programas PyM/RIAS con caché en memoria y suite de pruebas en Jest.",
+    title: "Datos clínicos convertidos en métricas para la gestión de salud.",
+    caseStudy: {
+      problem:
+        "Analizar costos médicos y desvíos frente a la Nota Técnica sobre más de 381 mil registros consolidados.",
+      contribution:
+        "API REST con NestJS y Prisma, consultas analíticas sobre datos SAP, PLENUS y PANA, caché en memoria y pruebas con Jest.",
+      outcome:
+        "Métricas para 5 dashboards gerenciales: procedimientos, costos, oportunidad médica y programas de prevención.",
+    },
     repo: "https://github.com/Gabrielda2002/backend-auto",
     demo: "",
   },

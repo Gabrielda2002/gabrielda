@@ -18,8 +18,15 @@ export interface SkillGroup {
   items: SkillItem[];
 }
 
-export type ProjectType = "Web app" | "App móvil" | "Full Stack" | "Sitio" | "Panel";
+export type ProjectType =
+  "Web app" | "App móvil" | "Full Stack" | "Sitio" | "Panel";
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
 
 export interface Project {
   id: string;
@@ -27,11 +34,15 @@ export interface Project {
   type: ProjectType;
   tags: string[];
   title: string;
-  description: string;
+  caseStudy: {
+    problem: string;
+    contribution: string;
+    outcome: string;
+  };
   repo?: string;
   repoApi?: string;
   demo?: string;
-  image?: string;
+  image?: ProjectImage;
 }
 
 export interface SocialLink {
